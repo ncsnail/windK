@@ -18,15 +18,15 @@
 		<context:exclude-filter type="regex" expression=".*JpaDao" />
 	</context:component-scan>
 	
-	<!-- MyBatis配置 -->
+	<!-- MyBatis -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<!-- 自动扫描entity目录, 省掉Configuration.xml里的手工配置 -->
+		<!-- scan entitis under this page, leave out manual comfiguration in Configuration.xml -->
 		<property name="typeAliasesPackage" value="org.wind.k.entity" />
-		<!-- 显式指定Mapper文件位置 -->
-		<property name="mapperLocations" value="classpath:/mybatis/*Mapper.xml" />
+		<!-- declare the location of Mapper files -->
+		<property name="mapperLocations" value="classpath:/repository/mybatis/*Mapper.xml" />
 	</bean>
-	<!-- 扫描basePackage下所有以@MyBatisRepository标识的 接口-->
+	<!-- scan the basePackage to find the interface signed by annotation @MyBatisRepository-->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage" value="org.wind.k.repository.mybatis" />
 		<property name="annotationClass" value="org.wind.k.repository.mybatis.MyBatisRepository"/>
@@ -36,12 +36,9 @@
         <property name="dataSource" ref="dataSource" />
     </bean>
 
-	<!-- 使用annotation定义事务 -->
+	<!-- declare to use annotation for transaction manager -->
 	<tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true" />
 	
-	<!-- hibernate validator -->
-	<bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean"/>
-
 	<!-- local development -->
 	<beans profile="development">
 		<context:property-placeholder ignore-resource-not-found="true"

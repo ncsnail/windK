@@ -24,7 +24,7 @@
 	<mvc:view-controller path="/web/mashup-client" view-name="/web/mashup-client"/>
 	
 	
-	<!-- 容器默认的DefaultServletHandler处理 所有静态内容与无RequestMapping处理的URL-->
+	<!-- DefaultServletHandler ,to deal with static contents and the URLs  unrelated with RequestMapping -->
 	<mvc:default-servlet-handler/>
 	
 	<!-- HandlerMapping 
@@ -35,11 +35,11 @@
 	
 	<mvc:annotation-driven content-negotiation-manager="contentNegotiationManager">
 		<mvc:message-converters register-defaults="true">
-			<!-- 将StringHttpMessageConverter的默认编码设为UTF-8 -->
+			<!-- set the encoding of  StringHttpMessageConverter -->
 			<bean class="org.springframework.http.converter.StringHttpMessageConverter">
 		    	<constructor-arg value="UTF-8" />
 			</bean>
-			<!-- 将Jackson2HttpMessageConverter的默认格式化输出设为true -->
+			<!-- set default output format-->
 			<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
                 <property name="prettyPrint" value="true"/>
             </bean>

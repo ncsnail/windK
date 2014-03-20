@@ -13,10 +13,14 @@
 
 	<description>applicationContext list for windK</description>
 
-	<!-- shiro 权限 -->
-	<import resource="security/applicationContext-shiro.xml" />
+	<!-- shiro -->
+	<import resource="security/shiro-context.xml" />
+	<!-- Apache CXF soap web service -->
+	<import resource="webservice/cxf-server.xml"/>
 	
-	<!-- 定义aspectj -->
+	<!-- aspectj -->
 	<aop:aspectj-autoproxy proxy-target-class="true"/>
-
+	
+	<!-- hibernate validator -->
+	<bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean"/>
 </beans>
