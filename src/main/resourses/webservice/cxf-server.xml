@@ -7,13 +7,17 @@
 	<description>Apache CXF --- SOAP Web Service</description>
 	
 	<!-- jax-ws endpoint (jax-ws is a kind of JAVA API for XML web services) -->
-	<jaxws:endpoint id="user">
+	<jaxws:endpoint id="user" address="/userCXFService">
 		<jaxws:implementor ref="userCXFService" />
 	</jaxws:endpoint>
 	
 	<!-- WebService implement-->
-	<bean id="userCXFService" class="org.wind.k.webservice.cxf.UserCXFServiceImpl" />
-	
-	
+	<bean id="userCXFService" class="org.wind.k.webservice.cxf.service.UserCXFServiceImpl" name="userCXFService">
+		<constructor-arg ref="webServiceConfig"/>
+	</bean>
+	<!--webServiceConfig is used for getting the configuration of webservice  -->
+	<bean id="webServiceConfig" class="org.apache.commons.configuration.PropertiesConfiguration" name="webServiceConfig">
+		<constructor-arg type="java.lang.String" value="webservice/webservice.properties"/>
+	</bean>
 	
 </beans>
