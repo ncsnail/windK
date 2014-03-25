@@ -1,12 +1,12 @@
 package org.wind.k.webservice.cxf.service;
 
-import javax.jws.WebParam;
 import javax.jws.WebService;
+
+import org.wind.k.webservice.cxf.response.UserResult;
 
 @WebService
 public interface IUserCXFService {
 
-	public String checkUser(@WebParam(name = "username")String username,
-			@WebParam(name = "password")String password);
+	public UserResult getUser(Long id);
 	
 }

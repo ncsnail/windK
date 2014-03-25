@@ -6,6 +6,11 @@
 
 	<description>Apache CXF --- SOAP Web Service</description>
 	
+	
+	<import resource="classpath:META-INF/cxf/cxf.xml" />  
+    <import resource="classpath:META-INF/cxf/cxf-extension-soap.xml" />  
+    <import resource="classpath:META-INF/cxf/cxf-servlet.xml" /> 
+	
 	<!-- jax-ws endpoint (jax-ws is a kind of JAVA API for XML web services) -->
 	<jaxws:endpoint id="user" address="/userCXFService">
 		<jaxws:implementor ref="userCXFService" />
