@@ -1,8 +1,20 @@
 package org.wind.k.webservice.cxf.response;
 
+import javax.xml.bind.annotation.XmlType;
+
+import org.wind.k.webservice.cxf.base.WSConstants;
+import org.wind.k.webservice.cxf.base.WSResult;
 import org.wind.k.webservice.cxf.dto.TeamDTO;
 
-public class TeamResult {
+/***
+ * 
+ * @author Stephen
+ * 
+ * @Date 2014-3-26
+ *
+ */
+@XmlType(name = "TeamResult" )
+public class TeamResult extends WSResult{
 	
 	private TeamDTO team;	
 	

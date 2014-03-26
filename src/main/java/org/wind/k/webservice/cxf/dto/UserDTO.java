@@ -4,6 +4,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.wind.k.webservice.cxf.base.WSConstants;
 
 /**
  * 
@@ -13,6 +14,8 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
  *
  */
 
+@XmlRootElement
+@XmlType(name="User")
 public class UserDTO {
 
 	private Long id;

@@ -9,6 +9,7 @@ import org.wind.k.entity.User;
 import org.wind.k.repository.mybatis.UserMyBatisDao;
 import org.wind.k.utils.BeanMapper;
 import org.wind.k.webservice.cxf.base.WSCXFSevice;
+import org.wind.k.webservice.cxf.base.WSConstants;
 import org.wind.k.webservice.cxf.dto.UserDTO;
 import org.wind.k.webservice.cxf.response.UserResult;
 

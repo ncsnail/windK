@@ -8,6 +8,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.wind.k.webservice.cxf.base.WSConstants;
 
 import com.google.common.collect.Lists;
 
@@ -19,10 +20,14 @@ import com.google.common.collect.Lists;
  *
  */
 
+@XmlRootElement
+@XmlType(name = "Team")
 public class TeamDTO {
 
 	private String name;
 	private UserDTO master;
+	
+	
 	private List<UserDTO> userList = Lists.newArrayList();
 
 	public String getName() {
@@ -41,6 +46,8 @@ public class TeamDTO {
 		this.master = master;
 	}
 
+	@XmlElementWrapper( name = "userList")
+	@XmlElement(name = "user")
 	public List<UserDTO> getUserList() {
 		return userList;
 	}

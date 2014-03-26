@@ -1,6 +1,15 @@
 package org.wind.k.webservice.cxf.base;
 
+import javax.xml.bind.annotation.XmlType;
 
+/**
+ * 
+ * @author Stephen
+ * 
+ * @Date 2014-3-26
+ *
+ */
+@XmlType(name = "WSResult")
 public class WSResult {
 	
 	public static final String SUCCESS = "0";
