@@ -36,7 +36,6 @@
 			<th>Username</th>
 			<th>Name</th>
 			<th>Email</th>
-			<th>Role</th>
 			<th>Status</th>
 			<th>Operation</th>
 		</tr>
@@ -47,7 +46,6 @@
 				<td>${user.loginName}&nbsp;</td>
 				<td>${user.name}&nbsp;</td>
 				<td>${user.email}&nbsp;</td>
-				<td>${user.roleNames}&nbsp;</td>
 				<td>${allStatus[user.status]}&nbsp;</td>
 				<td>
 				<a href="${ctx}/user/update/${user.id}" id="editLink-${user.loginName}">Edit</a>

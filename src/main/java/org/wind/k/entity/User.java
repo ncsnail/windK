@@ -44,7 +44,7 @@ public class User extends IdEntity{
 	@Fetch(FetchMode.SUBSELECT)
 	@OrderBy("id ASC")
 	@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-	private List<Role> roleList = Lists.newArrayList();//有序的对象集合
+	private List<Role> roleList = Lists.newArrayList();//the objects in it is ordered
 	
 	@ManyToOne
 	@JoinColumn(name = "team_id")
