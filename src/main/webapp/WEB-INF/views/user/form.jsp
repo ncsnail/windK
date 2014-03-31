@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <c:set var="ctx" value="${pageContext.request.contextPath}"/>
 <html>
 <head>
@@ -31,7 +32,7 @@
 
 <body>
 	<h1>Show Board</h1>
-	<form id="inputForm" action="${ctx}/user/update" method="post" class="form-horizontal">
+	<form:form id="inputForm" action="${ctx}/user/update" method="post" class="form-horizontal" modelAttribute="user">
 		<input type="hidden" name="id" value="${user.id}"/>
 		<fieldset>
 			<legend><small>User Managerment</small></legend>
@@ -51,18 +52,19 @@
 			<div class="control-group">
 				<label for="plainPassword" class="control-label">Password:</label>
 				<div class="controls">
-					<input type="password" id="plainPassword" name="plainPassword" class="input-large" placeholder="...Leave it blank if no change"/>
+					<input type="password" id="plainPassword" name="plainPassword" class="input-large" placeholder="Leave it blank if there is no change"/>
 				</div>
 			</div>
 			<div class="control-group">
 				<label for="groupList" class="control-label">Role:</label>
 				<div class="controls">
-					
+					<form:checkboxes path="roleList" items="${allRoles}"  itemLabel="name" itemValue="id"/> 
 				</div>
 			</div>	
 			<div class="control-group">
 				<label for="status" class="control-label">Status:</label>
 				<div class="controls">
+					<form:radiobuttons path="status" items="${allStatus}"/>
 				</div>
 			</div>
 			<div class="control-group">
@@ -77,6 +79,6 @@
 				<p class="help-block">(保存后将发送JMS消息通知改动，而消息接收者将发送提醒邮件)</p>			
 			</div>
 		</fieldset>
-	</form>
+	</form:form>
 </body>
 </html>

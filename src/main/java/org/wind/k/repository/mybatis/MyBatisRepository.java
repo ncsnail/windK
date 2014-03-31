@@ -14,9 +14,9 @@ import org.springframework.stereotype.Component;
  * @author stephen
  *
  */
-@Retention(RetentionPolicy.RUNTIME)//虚拟机在运行时会对其读取
-@Target(ElementType.TYPE)//表示注解应用的类型，是类,（ElementType.method是方法）
-@Documented //加入javadoc中
+@Retention(RetentionPolicy.RUNTIME)//the virtual machine will read the annotation in runtime
+@Target(ElementType.TYPE)//annotation type ,for class or method,（ElementType.method denotes method）
+@Documented //document it in javadoc
 @Component
 public @interface MyBatisRepository {
 	String values() default "";

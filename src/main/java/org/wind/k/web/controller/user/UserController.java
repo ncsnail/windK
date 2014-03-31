@@ -1,5 +1,6 @@
 package org.wind.k.web.controller.user;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.validation.Valid;
@@ -20,7 +21,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.wind.k.entity.Role;
 import org.wind.k.entity.User;
+import org.wind.k.service.role.IRoleService;
 import org.wind.k.service.user.IUserService;
 import org.wind.k.to.SearchCriteria;
 
@@ -34,12 +37,15 @@ public class UserController {
 	private static Map<String,String> allStatus = Maps.newHashMap();
 	
 	static{
-		allStatus.put("enabled", "enabled");
-		allStatus.put("disabled", "disabled");
+		allStatus.put("enabled", "youxiao");
+		allStatus.put("disabled", "wuxiao");
 	}
 	
 	@Autowired
 	IUserService userService;
+	
+	@Autowired
+	IRoleService roleService;
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public String getList(SearchCriteria search,
@@ -78,8 +84,13 @@ public class UserController {
 	public String getUser(@PathVariable("id") Long userId,Model model){
 		try{
 			User user  = userService.getUser(userId);
+			List<Role> allRoles = roleService.getAll();
 			if(user != null){
 				model.addAttribute("user", user);
+				model.addAttribute("allStatus", allStatus);
+				if(allRoles != null && allRoles.size()>0){
+					model.addAttribute("allRoles", allRoles);
+				}
 			}
 		}catch(Exception e){
 			e.printStackTrace();
