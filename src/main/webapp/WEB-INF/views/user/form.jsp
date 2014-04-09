@@ -74,9 +74,9 @@
 				</div>
 			</div>
 			<div class="form-actions">
-				<input id="submit_btn" class="btn btn-primary" type="submit" value="提交"/>&nbsp;	
-				<input id="cancel_btn" class="btn" type="button" value="返回" onclick="history.back()"/>
-				<p class="help-block">(保存后将发送JMS消息通知改动，而消息接收者将发送提醒邮件)</p>			
+				<input id="submit_btn" class="btn btn-primary" type="submit" value="submit"/>&nbsp;	
+				<input id="cancel_btn" class="btn" type="button" value="return" onclick="history.back()"/>
+				<p class="help-block">JMS</p>			
 			</div>
 		</fieldset>
 	</form:form>

@@ -38,11 +38,10 @@
 	</bean>
 	
 	<bean id="hibernateJpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
-		<property name="databasePlatform">
-			<bean factory-method="getDialect" class="org.springside.modules.persistence.Hibernates">
-				<constructor-arg ref="dataSource"/>
-			</bean>
-		</property>
+		<property name="database" value="MYSQL"/>
+        <property name="showSql" value="true" />
+        <property name="generateDdl" value="false" />
+		<property name="databasePlatform" value="org.hibernate.dialect.MySQL5Dialect" />
 	</bean>
 
 	<!-- jpa repositories, scan repository interface extends jpa Repository<T,ID> interface under the base package and inject it-->
@@ -53,11 +52,6 @@
 		<property name="entityManagerFactory" ref="entityManagerFactory"/>
 	</bean>
 	
-	<!-- another transaction manager for quartz
-	<bean id="quartzTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-		<property name="dataSource" ref="quartzDataSource" />
-	</bean>
-	-->
 	<!-- declare to use annotation for transaction manager -->
 	<tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true" />
 
@@ -74,15 +68,6 @@
 			<property name="password" value="${jdbc.password}" />
 			<property name="defaultAutoCommit" value="false" />
 		</bean>
-		
-		<!-- Spring Simple connection pool for quartz
-		<bean id="quartzDataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
-			<property name="driverClass" value="${quartz.jdbc.driver}" />
-			<property name="url" value="${quartz.jdbc.url}" />
-			<property name="username" value="${quartz.jdbc.username}" />
-			<property name="password" value="${quartz.jdbc.password}" />
-		</bean>
-		 -->
 	</beans>
 
 </beans>

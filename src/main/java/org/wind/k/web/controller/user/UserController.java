@@ -6,6 +6,9 @@ import java.util.Map;
 import javax.validation.Valid;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.shiro.authz.annotation.Logical;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -47,6 +50,7 @@ public class UserController {
 	@Autowired
 	IRoleService roleService;
 	
+	@RequiresRoles(value = {"Admin", "User"} ,logical = Logical.OR)
 	@RequestMapping(method = RequestMethod.GET)
 	public String getList(SearchCriteria search,
 						  @RequestParam(value="pageNum",defaultValue="1") int pageNum,
@@ -80,6 +84,7 @@ public class UserController {
 		return "user/list";
 	}
 	
+	@RequiresRoles("Admin")
 	@RequestMapping(value = "/update/{id}",method = RequestMethod.GET)
 	public String getUser(@PathVariable("id") Long userId,Model model){
 		try{
@@ -98,6 +103,7 @@ public class UserController {
 		return "user/form";
 	}
 	
+	@RequiresPermissions("user:edit")
 	@RequestMapping(value = "/update",method = RequestMethod.POST)
 	public String updateUser(@Valid @ModelAttribute("user") User user,RedirectAttributes redirectAttributes){
 		

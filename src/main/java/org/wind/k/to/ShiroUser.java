@@ -1,7 +1,10 @@
 package org.wind.k.to;
 
-public class ShiroUser {
+import java.io.Serializable;
+
+public class ShiroUser implements Serializable{
 	
+	private static final long serialVersionUID = 1L;
 	public Long id;
 	public String loginName;
 	public String name;

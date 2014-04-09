@@ -48,7 +48,8 @@
 				<td>${user.email}&nbsp;</td>
 				<td>${allStatus[user.status]}&nbsp;</td>
 				<td>
-				<a href="${ctx}/user/update/${user.id}" id="editLink-${user.loginName}">Edit</a>
+				<shiro:hasPermission name="user:edit"><a href="${ctx}/user/update/${user.id}" id="editLink-${user.loginName}">Edit</a></shiro:hasPermission>
+				<shiro:lacksPermission name="user:edit">no operation</shiro:lacksPermission>	
 				</td>
 			</tr>
 		</c:forEach>

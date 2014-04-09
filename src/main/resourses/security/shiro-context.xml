@@ -16,6 +16,13 @@
 	</bean>
 	
 	<!-- Shiro Filter -->
+	<!--  filterChainDefinitions
+ 		/login = authc
+		/logout = logout
+		/static/** = anon
+		/register/** = anon
+		/** = user
+	 -->
 	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
 		<property name="securityManager" ref="securityManager" />
 		<property name="loginUrl" value="/login" />
@@ -24,9 +31,8 @@
 			<value>
 				/login = authc
 				/logout = logout
-				/static/** = anon
+				/user/** = user
 				/register/** = anon
-				/** = user
 			</value>
 		</property>
 	</bean>
